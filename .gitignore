@@ -132,4 +132,4 @@ dmypy.json
 *.db
 *.csv
 *.png
-ham-and-spam-dataset
+*.json
