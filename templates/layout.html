@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>That's Trending</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='master.css') }}" />
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">That's Trending</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    {% if section == 'home' %}
+                    <li class="active"><a href="/">Home</a></li>
+                    {% else %}
+                    <li><a href="/">Home</a></li>
+                    {% endif %} {% if section == 'national' %}
+                    <li class="active"><a href="/national">National</a></li>
+                    {% else %}
+                    <li><a href="/national">National</a></li>
+                    {% endif %} {% if section == 'sports' %}
+                    <li class="active"><a href="/sports">Sports</a></li>
+                    {% else %}
+                    <li><a href="/sports">Sports</a></li>
+                    {% endif %} {% if section == 'world' %}
+                    <li class="active"><a href="/world">World</a></li>
+                    {% else %}
+                    <li><a href="/world">World</a></li>
+                    {% endif %} {% if section == 'politics' %}
+                    <li class="active"><a href="/politics">Politics</a></li>
+                    {% else %}
+                    <li><a href="/politics">Politics</a></li>
+                    {% endif %} {% if section == 'technology' %}
+                    <li class="active"><a href="/technology">Technology</a></li>
+                    {% else %}
+                    <li><a href="/technology">Technology</a></li>
+                    {% endif %} {% if section == 'entertainment' %}
+                    <li class="active"><a href="/entertainment">Entertainment</a></li>
+                    {% else %}
+                    <li><a href="/entertainment">Entertainment</a></li>
+                    {% endif %} {% if section == 'miscellaneous' %}
+                    <li class="active"><a href="/miscellaneous">Miscellaneous</a></li>
+                    {% else %}
+                    <li><a href="/miscellaneous">Miscellaneous</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="w3-row-padding w3-section">
+        <aside class="w3-col m4 l3">
+            <h1>Archives</h1>
+            <input type="text" id="searchInput" onkeyup="listfilter()" placeholder="Search for hashtags.." />
+            <ul id="archivesUL" class="collection">
+                {% for p in posts %}
+                <li class="collection-item"><a href="/archive?q={{p['Id']}}">{{p['Hashtag']}}</a></li>
+                {% endfor %}
+            </ul>
+        </aside>
+        <main class="w3-col m8 l9">
+            {% for d in data.items %}
+            <div class="card w3-padding-large w3-margin" id="{{d['Id']}}">
+                <div class="card-body">
+                    <div class="w3-row">
+                        <div class="w3-col m7 s12">
+                            <span class="card-title">{{d['Hashtag']}}</span>
+                            <div class="tag-container w3-section">
+                                {% if d['National'] == 1 %}
+                                <span class="w3-tag">National</span> {% endif %} {% if d['Sports'] == 1 %}
+                                <span class="w3-tag">Sports</span> {% endif %} {% if d['World'] == 1 %}
+                                <span class="w3-tag">World</span> {% endif %} {% if d['Politics'] == 1 %}
+                                <span class="w3-tag">Politics</span> {% endif %} {% if d['Technology'] == 1 %}
+                                <span class="w3-tag">Technology</span> {% endif %} {% if d['Entertainment'] == 1 %}
+                                <span class="w3-tag">Entertainment</span> {% endif %} {% if d['Hatke'] == 1 %}
+                                <span class="w3-tag">Miscellaneous</span> {% endif %}
+                            </div>
+                        </div>
+                        <div class="w3-col m5 s12">
+                            <div class="w3-right-align">
+                                {{d['Hotness']}} recent interactions on this
+                                <br>
+                            </div>
+                            <small class="text-muted w3-right-align">{{d['Timestamp'].strftime("%a, %d %B %Y, %H:%M")}}</small> <br>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-success" role="progressbar" style="width:{{d['Sentiment']}}%">
+                                    Positive
+                                </div>
+                                <div class="progress-bar progress-bar-danger" role="progressbar" style="width:{{100-d['Sentiment']}}%">
+                                    Negative
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w3-row-padding">
+                        <div class="tweet w3-col m6 s12">{{d['Tweet1']|safe}}</div>
+                        <div class="tweet w3-col m6 s12">{{d['Tweet2']|safe}}</div>
+                    </div>
+                    <br>
+                    <div class="w3-row-padding">
+                        <div class="tweet w3-col m6 s12">{{d['Tweet3']|safe}}</div>
+                        <div class="tweet w3-col m6 s12">{{d['Tweet4']|safe}}</div>
+                    </div>
+                    <br>
+                    <div class="w3-row">
+                        <h4>Authenticity:</h4>
+                        <div class="auth-container">
+                            <div class="auth" style="width: {{d['VerificationScore']}}%;">
+                                {{d['VerificationScore']}}%
+                            </div>
+                        </div>
+                        <div class="stories">
+                            <h4>More Info:</h4> <br />
+                            <button class="btn waves-effect waves-light btn-small">
+                          <a target="_blank" href="{{d['FullStory']}}">
+                            Full Story <i class="material-icons right">near_me</i></a>
+                        </button> <br> {% if d['ANI'] != '' %}
+                            <button class="btn waves-effect waves-light btn-small">
+                          <a target="_blank" href="{{ d['ANI'] }}">ANI <i class="material-icons right">near_me</i></a>
+                        </button> {% endif %} {% if d['HindustanTimes'] != '' %}
+                            <button class="btn waves-effect waves-light btn-small">
+                          <a target="_blank" href="{{ d['HindustanTimes'] }}">Hindustan Times <i
+                              class="material-icons right">near_me</i></a>
+                        </button> {% endif %} {% if d['IndiaToday'] != '' %}
+                            <button class="btn waves-effect waves-light btn-small">
+                          <a target="_blank" href="{{ d['IndiaToday'] }}">India Today <i class="material-icons right">near_me</i></a>
+                        </button> {% endif %} {% if d['IndianExpress'] != '' %}
+                            <button class="btn waves-effect waves-light btn-small">
+                          <a target="_blank" href="{{ d['IndianExpress'] }}">Indian Express <i
+                              class="material-icons right">near_me</i></a>
+                        </button> {% endif %} {% if d['NDTV'] != '' %}
+                            <button class="btn waves-effect waves-light btn-small">
+                          <a target="_blank" href="{{ d['NDTV'] }}">NDTV <i class="material-icons right">near_me</i></a>
+                        </button> {% endif %} {% if d['TheHindu'] != '' %}
+                            <button class="btn waves-effect waves-light btn-small">
+                          <a target="_blank" href="{{ d['TheHindu'] }}">The Hindu <i class="material-icons right">near_me</i></a>
+                        </button> {% endif %}
+                        </div>
+                    </div> <br>
+                    <div class="w3-row">
+                        <div class="w3-col m6 s12">
+                            <h4>Related Hashtags and Public Sentiments</h4> <br>
+                            <div class="tag-container">
+                                <img class="responsive-img" src="{{ url_for('static', filename=d.Trend) }}" alt="error">
+                            </div>
+                        </div>
+                        <div class="w3-col m6 s12 w3-padding">
+                            <h4>People who tweeted</h4><br>
+                            <ul>
+                                {% for _ in eval(d['Users']) %}
+                                <li><a href="{{ _[1] }}" target="_blank">{{ _[0] }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div> <br>
+                    <div class="share-links">
+                        Share:
+                        <a target="_blank" data-action="share/whatsapp/share" href="whatsapp://send?text=/archive?q={{d['Id']}}"><img src="{{ url_for('static', filename='whatsapp.svg') }}" alt="" class="share" /></a>
+                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/archive?q={{d['Id']}}"><img src="{{ url_for('static', filename='facebook.svg') }}" alt="" class="share" /></a>
+                        <a target="_blank" href="https://twitter.com/share?url=/archive?q={{d['Id']}}"><img src="{{ url_for('static', filename='twitter.svg') }}" alt="" class="share" /></a>
+                        <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url=/archive?q={{d['Id']}}"><img src="{{ url_for('static', filename='linkedin.svg') }}" alt="" class="share" /></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </main>
+        {% if section in ['home', 'national', 'sports', 'world', 'politics', 'technology', 'entertainment', 'miscellaneous'] %}
+        <div class="w3-center">
+            <ul class="pagination">
+                {% for page in data.iter_pages(left_edge=1, right_edge=1, left_current=3, right_current=4) %} {% if page %} {% if data.page == page %} {% if section == 'home' %}
+                <li class="active"><a href="/?page={{page}}">{{page}}</a></li>
+                {% else %}
+                <li class="active"><a href="/{{section}}?page={{page}}">{{page}}</a></li>
+                {% endif %} {% else %} {% if section == 'home' %}
+                <li><a href="/?page={{page}}">{{page}}</a></li>
+                {% else %}
+                <li><a href="/{{section}}?page={{page}}">{{page}}</a></li>
+                {% endif %} {% endif %} {% else %}
+                <li><a>...</a></li> {% endif %} {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+
+</html>

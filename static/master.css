@@ -1,0 +1,117 @@
+:root {
+    --c1: #272343;
+    --c2: #ffffff;
+    --c3: #e3f6f5;
+    --c4: #bae8e8;
+    --c5: #116979;
+    --c6: #00a8cc;
+    --c7: #4d80e4;
+    --c8: #005082;
+    --c9: #222831;
+    --c10: #393e46;
+    --c11: #29a19c;
+    --c12: #a3f7bf;
+}
+
+body {
+    background-color: var(--c2);
+}
+
+.card {
+    background-color: var(--c2);
+}
+
+nav {
+    background-color: var(--c6) !important;
+    border: none !important;
+    border-radius: 0px !important;
+}
+
+nav a {
+    color: black !important;
+}
+
+nav a:hover,
+.active a {
+    background-color: var(--c8) !important;
+    color: white !important;
+}
+
+nav ul li a {
+    font-size: medium;
+}
+
+.w3-tag {
+    background-color: var(--c6);
+    margin: 2px;
+}
+
+.tweet a {
+    color: var(--c8);
+}
+
+.stories .btn {
+    background-color: var(--c7);
+}
+
+.stories .btn a {
+    color: white;
+}
+
+.share-links a img {
+    height: 25px;
+}
+
+.sentiment-container {
+    width: 40%;
+}
+
+.sentiment {
+    text-align: right;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: white;
+}
+
+.auth-container {
+    width: 100%;
+    background-color: #ddd;
+}
+
+.auth {
+    text-align: right;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: white;
+    background-color: var(--c6);
+}
+
+.btn-small {
+    margin: 8px;
+}
+
+#archivesUL {
+    max-height: 400px;
+    overflow-y: scroll;
+}
+
+.responsive-img {
+    width: 100%;
+    height: auto;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--c4);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--c8);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--c5);
+}

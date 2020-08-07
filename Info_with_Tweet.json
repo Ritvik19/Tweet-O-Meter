@@ -1,0 +1,93 @@
+{
+    "created_at": "Mon Dec 23 02:49:05 +0000 2019",
+    "id": 1208942574788075526,
+    "id_str": "1208942574788075526",
+    "text": "trading $50 visa gift card \nIt’s basically a bank card \n#adoptmetrades #adoptmetrade \nNOT GOING FIRST NO MATTER HOW… https://t.co/WbNBljrZr7",
+    "truncated": "True",
+    "entities": {
+        "hashtags": [{
+                "text": "adoptmetrades",
+                "indices": [56, 70]
+            },
+            {
+                "text": "adoptmetrade",
+                "indices": [71, 84]
+            }
+        ],
+        "symbols": [],
+        "user_mentions": [],
+        "urls": [{
+            "url": "https://t.co/WbNBljrZr7",
+            "expanded_url": "https://twitter.com/i/web/status/1208942574788075526",
+            "display_url": "twitter.com/i/web/status/1…",
+            "indices": [117, 140]
+        }]
+    },
+    "metadata": {
+        "iso_language_code": "en",
+        "result_type": "recent"
+    },
+    "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+    "in_reply_to_status_id": "None",
+    "in_reply_to_status_id_str": "None",
+    "in_reply_to_user_id": "None",
+    "in_reply_to_user_id_str": "None",
+    "in_reply_to_screen_name": "None",
+    "user": {
+        "id": 1190991919377240064,
+        "id_str": "1190991919377240064",
+        "name": "trusted",
+        "screen_name": "badxbb",
+        "location": "",
+        "description": "message me if you wanna trade",
+        "url": "None",
+        "entities": {
+            "description": {
+                "urls": []
+            }
+        },
+        "protected": "False",
+        "followers_count": 202,
+        "friends_count": 53,
+        "listed_count": 0,
+        "created_at": "Sun Nov 03 13:59:45 +0000 2019",
+        "favourites_count": 50,
+        "utc_offset": "None",
+        "time_zone": "None",
+        "geo_enabled": "False",
+        "verified": "False",
+        "statuses_count": 1208,
+        "lang": "None",
+        "contributors_enabled": "False",
+        "is_translator": "False",
+        "is_translation_enabled": "False",
+        "profile_background_color": "F5F8FA",
+        "profile_background_image_url": "None",
+        "profile_background_image_url_https": "None",
+        "profile_background_tile": "False",
+        "profile_image_url": "http://pbs.twimg.com/profile_images/1203542274342346752/RpR_E-9F_normal.jpg",
+        "profile_image_url_https": "https://pbs.twimg.com/profile_images/1203542274342346752/RpR_E-9F_normal.jpg",
+        "profile_link_color": "1DA1F2",
+        "profile_sidebar_border_color": "C0DEED",
+        "profile_sidebar_fill_color": "DDEEF6",
+        "profile_text_color": "333333",
+        "profile_use_background_image": "True",
+        "has_extended_profile": "False",
+        "default_profile": "True",
+        "default_profile_image": "False",
+        "following": "False",
+        "follow_request_sent": "False",
+        "notifications": "False",
+        "translator_type": "None"
+    },
+    "geo": "None",
+    "coordinates": "None",
+    "place": "None",
+    "contributors": "None",
+    "is_quote_status": "False",
+    "retweet_count": 0,
+    "favorite_count": 0,
+    "favorited": "False",
+    "retweeted": "False",
+    "lang": "en"
+}
